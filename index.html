@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <title>GitHub Language Graphs</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
-        <script src="js/require.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
     </head>
 
     <body>
@@ -15,8 +15,10 @@
             <input id="input" type="text" placeholder="@username" autofocus="autofocus">
         </div>
 
-        <div>
-            <canvas id="myChart" width="400" height="400"></canvas>
-        </div>
+	      <div id="PageWrapper">
+            <div>
+					      <canvas id="barChart"  height="400px"></canvas>
+				    </div>
+	      </div>
     </body>
 </html>
