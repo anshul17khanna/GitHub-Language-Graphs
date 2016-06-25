@@ -64,6 +64,26 @@ function init(){
   					label: language_keys[i]
   			});
     }
+
+    var radarDataSet = [];
+    radarDataSet.push({
+        label: "My First dataset",
+        fillColor: "rgba(0, 204, 102,0.2)",
+        strokeColor: "rgba(0, 204, 102,1)",
+        pointColor: "rgba(0, 204, 102,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(0, 204, 102,1)",
+        data: language_values
+    });
+
+    var radarData = {
+			  labels: language_keys,
+			  datasets: radarDataSet
+    };
+
+    var radarC = $("#radarChart").get(0).getContext("2d");
+		var radarChart = new Chart(radarC).Radar(radarData, { responsive: true, maintainAspectRatio: false });
 }
 
 window.onload = init;
