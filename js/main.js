@@ -23,19 +23,32 @@ function init(){
     var lineData = {
 			  labels: language_keys,
 			  datasets: [{
-				label: "My First dataset",
-				fillColor: "rgba(0, 204, 102,0.2)",
-				strokeColor: "rgba(0, 204, 102,1)",
-				pointColor: "rgba(0, 204, 102,1)",
-				pointStrokeColor: "#fff",
-				pointHighlightFill: "#fff",
-				pointHighlightStroke: "rgba(0, 204, 102,1)",
-				data: language_values
-		}]
-};
+    				label: "My First dataset",
+    				fillColor: "rgba(0, 204, 102,0.2)",
+    				strokeColor: "rgba(0, 204, 102,1)",
+    				pointColor: "rgba(0, 204, 102,1)",
+    				pointStrokeColor: "#fff",
+    				pointHighlightFill: "#fff",
+    				pointHighlightStroke: "rgba(0, 204, 102,1)",
+    				data: language_values
+		    }]
+    };
 
     var lineC = $("#lineChart").get(0).getContext("2d");
 		var lineChart = new Chart(lineC).Line(lineData, { responsive: true, maintainAspectRatio: false });
+
+    var colorss = ['#3366ff','#5cd65c','#d98cb3','#3366ff','#5cd65c','#d98cb3','#3366ff','#5cd65c','#d98cb3'];
+    var pieData = [];
+    var pieC = $("#pieChart").get(0).getContext("2d");
+    var pieChart = new Chart(pieC).Pie(pieData, { responsive: true, maintainAspectRatio: false });
+    for(var i=0; i<language_values.length; i++){
+        pieChart.addData({
+  					value: language_values[i],
+  					color: colorss[i],
+  					highlight: colorss[i].highlight,
+  					label: language_keys[i]
+  			});
+    }
 }
 
 window.onload = init;
