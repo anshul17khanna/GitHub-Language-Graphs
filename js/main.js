@@ -38,11 +38,26 @@ function init(){
 		var lineChart = new Chart(lineC).Line(lineData, { responsive: true, maintainAspectRatio: false });
 
     var colorss = ['#3366ff','#5cd65c','#d98cb3','#3366ff','#5cd65c','#d98cb3','#3366ff','#5cd65c','#d98cb3'];
+
     var pieData = [];
     var pieC = $("#pieChart").get(0).getContext("2d");
     var pieChart = new Chart(pieC).Pie(pieData, { responsive: true, maintainAspectRatio: false });
+
     for(var i=0; i<language_values.length; i++){
         pieChart.addData({
+  					value: language_values[i],
+  					color: colorss[i],
+  					highlight: colorss[i].highlight,
+  					label: language_keys[i]
+  			});
+    }
+
+    var doughnutData =[];
+    var doughnutC = $("#doughnutChart").get(0).getContext("2d");
+		var doughnutChart = new Chart(doughnutC).Doughnut(doughnutData, { responsive: true, maintainAspectRatio: false });
+
+    for(var i=0; i<language_values.length; i++){
+        doughnutChart.addData({
   					value: language_values[i],
   					color: colorss[i],
   					highlight: colorss[i].highlight,
