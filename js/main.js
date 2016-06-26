@@ -263,6 +263,47 @@ function init(){
     };
 
     window.RadarChart = new Chart(document.getElementById("radarChart"), radarData);
+
+    var polarData = {
+        data: {
+            datasets: [{
+                data: language_values,
+                backgroundColor: [
+                    "#F7464A",
+                    "#46BFBD",
+                    "#FDB45C",
+                    "#949FB1",
+                    "#4D5360",
+                ],
+                label: 'My dataset'
+            }],
+            labels: language_keys
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Polar Area Chart'
+            },
+            scale: {
+              ticks: {
+                beginAtZero: true
+              },
+              reverse: false
+            },
+            animation: {
+                animateRotate: false,
+                animateScale: true
+            },
+            maintainAspectRatio: false
+        }
+    };
+
+    var polarC = document.getElementById("polarChart");
+    window.PolarArea = Chart.PolarArea(polarC, polarData);
 }
 
 window.onload = init;
