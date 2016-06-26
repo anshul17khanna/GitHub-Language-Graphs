@@ -8,82 +8,261 @@ function init(){
     var barData = {
         labels: language_keys,
         datasets: [{
-            label: "My First dataset",
-            fillColor: "rgba(247, 70, 74,0.5)",
-            strokeColor: "rgba(247, 70, 74,0.8)",
-            highlightFill: "rgba(247, 70, 74,0.75)",
-            highlightStroke: "rgba(247, 70, 74,1)",
+            label: 'Dataset 1',
+            backgroundColor: "rgba(220,220,220,0.5)",
             data: language_values
         }]
     };
 
-    var barC = $("#barChart").get(0).getContext("2d");
-    var barChart = new Chart(barC).Bar(barData, { responsive: true, maintainAspectRatio: false });
+    var barC = document.getElementById("barChart").getContext("2d");
+    window.BarChart = new Chart(barC, {
+        type: 'bar',
+        data: barData,
+        options: {
+            elements: {
+                rectangle: {
+                    borderWidth: 2,
+                    borderColor: 'rgb(0, 255, 0)',
+                    borderSkipped: 'bottom'
+                }
+            },
+            responsive: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Bar Chart'
+            },
+            maintainAspectRatio: false
+        }
+    });
 
     var lineData = {
-			  labels: language_keys,
-			  datasets: [{
-    				label: "My First dataset",
-    				fillColor: "rgba(0, 204, 102,0.2)",
-    				strokeColor: "rgba(0, 204, 102,1)",
-    				pointColor: "rgba(0, 204, 102,1)",
-    				pointStrokeColor: "#fff",
-    				pointHighlightFill: "#fff",
-    				pointHighlightStroke: "rgba(0, 204, 102,1)",
-    				data: language_values
-		    }]
+        type: 'line',
+        data: {
+            labels: language_keys,
+            datasets: [{
+                label: "My First dataset",
+                data: language_values,
+                fill: false,
+                borderDash: [5, 5],
+            }, {
+                hidden: true,
+                label: 'hidden dataset',
+                data: language_values
+            }, {
+                label: "My Second dataset",
+                data: language_values,
+            }]
+        },
+        options: {
+            responsive: true,
+            title:{
+                display:true,
+                text:'Chart.js Line Chart'
+            },
+            tooltips: {
+                mode: 'label'
+            },
+            hover: {
+                mode: 'dataset'
+            },
+            scales: {
+                xAxes: [{
+                    display: true
+                }]
+            },
+            maintainAspectRatio: false
+        }
     };
 
-    var lineC = $("#lineChart").get(0).getContext("2d");
-		var lineChart = new Chart(lineC).Line(lineData, { responsive: true, maintainAspectRatio: false });
+    var lineC = document.getElementById("lineChart").getContext("2d");
+    window.LineChart = new Chart(lineC, lineData);
 
-    var colorss = ['#3366ff','#5cd65c','#d98cb3','#3366ff','#5cd65c','#d98cb3','#3366ff','#5cd65c','#d98cb3'];
+    var pieData = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: language_values,
+                backgroundColor: [
+                    "#F7464A",
+                    "#46BFBD",
+                    "#FDB45C",
+                    "#949FB1",
+                    "#4D5360",
+                ]
+            }, {
+                data: language_values,
+                backgroundColor: [
+                    "#F7464A",
+                    "#46BFBD",
+                    "#FDB45C",
+                    "#949FB1",
+                    "#4D5360",
+                ],
+            }, {
+                data: language_values,
+                backgroundColor: [
+                    "#F7464A",
+                    "#46BFBD",
+                    "#FDB45C",
+                    "#949FB1",
+                    "#4D5360",
+                ],
+            }],
+            labels: language_keys
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    };
 
-    var pieData = [];
-    var pieC = $("#pieChart").get(0).getContext("2d");
-    var pieChart = new Chart(pieC).Pie(pieData, { responsive: true, maintainAspectRatio: false });
+    var pieC = document.getElementById("pieChart").getContext("2d");
+    window.PieChart = new Chart(pieC, pieData);
 
-    for(var i=0; i<language_values.length; i++){
-        pieChart.addData({
-  					value: language_values[i],
-  					color: colorss[i],
-  					highlight: colorss[i].highlight,
-  					label: language_keys[i]
-  			});
+    var doughnutData = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: language_values,
+                backgroundColor: [
+                    "#F7464A",
+                    "#46BFBD",
+                    "#FDB45C",
+                    "#949FB1",
+                    "#4D5360",
+                ],
+                label: 'Dataset 1'
+            }, {
+                hidden: true,
+                data: language_values,
+                backgroundColor: [
+                    "#F7464A",
+                    "#46BFBD",
+                    "#FDB45C",
+                    "#949FB1",
+                    "#4D5360",
+                ],
+                label: 'Dataset 2'
+            }, {
+                data: language_values,
+                backgroundColor: [
+                    "#F7464A",
+                    "#46BFBD",
+                    "#FDB45C",
+                    "#949FB1",
+                    "#4D5360",
+                ],
+                label: 'Dataset 3'
+            }],
+            labels: language_keys
+        },
+        options: {
+            responsive: true,
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Doughnut Chart'
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            maintainAspectRatio: false
+        }
+    };
+
+    var doughnutC = document.getElementById("doughnutChart").getContext("2d");
+    window.DoughnutChart = new Chart(doughnutC, doughnutData);
+
+    var randomScalingFactor = function(){
+        return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+    };
+    var randomColorFactor = function(){
+        return Math.round(Math.random() * 255);
+    };
+    var randomColor = function(){
+        return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',.7)';
+    };
+    var radiusData = [];
+    for(var k =0; k<language_keys.length; k++){
+        radiusData.push({
+            x: randomScalingFactor(),
+            y: randomScalingFactor(),
+            r: language_values[k],
+        });
     }
+    var bubbleData = {
+        animation: {
+            duration: 10000
+        },
+        datasets: [{
+            label: "My First dataset",
+            backgroundColor: randomColor(),
+            data: radiusData
+        }, {
+            label: "My Second dataset",
+            backgroundColor: randomColor(),
+            data: radiusData
+        }]
+    };
 
-    var doughnutData =[];
-    var doughnutC = $("#doughnutChart").get(0).getContext("2d");
-		var doughnutChart = new Chart(doughnutC).Doughnut(doughnutData, { responsive: true, maintainAspectRatio: false });
-
-    for(var i=0; i<language_values.length; i++){
-        doughnutChart.addData({
-  					value: language_values[i],
-  					color: colorss[i],
-  					highlight: colorss[i].highlight,
-  					label: language_keys[i]
-  			});
-    }
-
-    var radarDataSet = [];
-    radarDataSet.push({
-        label: "My First dataset",
-        fillColor: "rgba(0, 204, 102,0.2)",
-        strokeColor: "rgba(0, 204, 102,1)",
-        pointColor: "rgba(0, 204, 102,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(0, 204, 102,1)",
-        data: language_values
+    var bubbleC = document.getElementById("bubbleChart").getContext("2d");
+    window.BubbleChart = new Chart(bubbleC, {
+        type: 'bubble',
+        data: bubbleData,
+        options: {
+            responsive: true,
+            title:{
+                display:true,
+                text:'Chart.js Bubble Chart'
+            },
+            maintainAspectRatio: false
+        }
     });
 
     var radarData = {
-			  labels: language_keys,
-			  datasets: radarDataSet
+        type: 'radar',
+        data: {
+            labels: language_keys,
+            datasets: [{
+                label: 'Hidden dataset',
+                data: language_values
+            }, {
+                label: "My Second dataset",
+                backgroundColor: "rgba(151,187,205,0.2)",
+                pointBackgroundColor: "rgba(151,187,205,1)",
+                hoverPointBackgroundColor: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: language_values
+            }]
+        },
+        options: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Radar Chart'
+            },
+            scale: {
+              reverse: false,
+              gridLines: {
+                color: ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+              },
+              ticks: {
+                beginAtZero: true
+              }
+            },
+            maintainAspectRatio: false
+        }
     };
 
-    var radarC = $("#radarChart").get(0).getContext("2d");
-		var radarChart = new Chart(radarC).Radar(radarData, { responsive: true, maintainAspectRatio: false });
+    window.RadarChart = new Chart(document.getElementById("radarChart"), radarData);
 }
 
 window.onload = init;
