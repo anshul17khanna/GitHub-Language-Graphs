@@ -10,7 +10,7 @@ function init(){
     var barData = {
         labels: language_keys,
         datasets: [{
-            //label: 'Repos ',
+            label: 'Repos ',
             backgroundColor: language_colors,
             data: language_values
         }]
@@ -29,6 +29,7 @@ function init(){
             responsive: true,
             legend: {
                 position: 'top',
+                display: false
             },
             title: {
                 fontSize: 30,
@@ -44,7 +45,7 @@ function init(){
         data: {
             labels: language_keys,
             datasets: [{
-                label: "Total Repos ",
+                label: "Repos ",
                 data: language_values,
                 fill: true,
                 pointRadius: 5,
@@ -70,6 +71,10 @@ function init(){
                 xAxes: [{
                     display: true
                 }]
+            },
+            legend: {
+                position: 'top',
+                display: false
             },
             maintainAspectRatio: false
         }
@@ -163,8 +168,8 @@ function init(){
     var radiusData = [];
     for(var k =0; k<language_keys.length; k++){
         radiusData.push({
-            x: randomScalingFactor(),
-            y: randomScalingFactor(),
+            x: randomScalingFactor()/20,
+            y: randomScalingFactor()/20,
             r: language_values[k],
         });
     }
@@ -173,12 +178,7 @@ function init(){
             duration: 10000
         },
         datasets: [{
-            //label: "My First dataset",
             backgroundColor: language_colors,
-            data: radiusData
-        }, {
-            //label: "My Second dataset",
-            backgroundColor: randomColor(),
             data: radiusData
         }]
     };
@@ -204,18 +204,15 @@ function init(){
             labels: language_keys,
             datasets: [{
                 label: 'Hidden dataset',
-                data: language_values
-            }, {
-                label: "My Second dataset",
-                backgroundColor: "rgba(151,187,205,0.2)",
-                pointBackgroundColor: "rgba(151,187,205,1)",
-                hoverPointBackgroundColor: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: language_values
+                data: language_values,
+                pointRadius: 3,
+                pointHoverRadius: 5,
+                pointBackgroundColor: language_colors,
             }]
         },
         options: {
             legend: {
+                display: false,
                 position: 'top',
             },
             title: {
@@ -277,7 +274,7 @@ function init(){
 
 window.onload = init;
 
-$.getJSON("https://api.github.com/users/anshul17khanna/repos?callback=?", function(data){
+$.getJSON("https://api.github.com/users/ManrajGrover/repos?callback=?", function(data){
 
     $(data.data).each(function(i,d){
         repos.push(d.name);
