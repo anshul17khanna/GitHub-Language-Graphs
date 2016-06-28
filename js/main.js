@@ -181,42 +181,6 @@ $(document).ready(function(){
         var doughnutC = document.getElementById("doughnutChart").getContext("2d");
         window.DoughnutChart = new Chart(doughnutC, doughnutData);
 
-        var randomScalingFactor = function(){
-            return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
-        };
-        var radiusData = [];
-        for(var k =0; k<language_keys.length; k++){
-            radiusData.push({
-                x: randomScalingFactor()/20,
-                y: randomScalingFactor()/20,
-                r: language_values[k],
-            });
-        }
-        var bubbleData = {
-            animation: {
-                duration: 10000
-            },
-            datasets: [{
-                backgroundColor: language_colors,
-                data: radiusData
-            }]
-        };
-
-        var bubbleC = document.getElementById("bubbleChart").getContext("2d");
-        window.BubbleChart = new Chart(bubbleC, {
-            type: 'bubble',
-            data: bubbleData,
-            options: {
-                responsive: true,
-                title:{
-                    fontSize: 30,
-                    display:true,
-                    text:'Bubble Chart'
-                },
-                maintainAspectRatio: false
-            }
-        });
-
         var radarData = {
             type: 'radar',
             data: {
