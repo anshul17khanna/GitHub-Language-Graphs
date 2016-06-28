@@ -32,6 +32,9 @@ $(document).ready(function(){
     }
 
     function showChart(){
+        $(".loader").fadeOut(800);
+        $("#loaderDiv").css("height", "30px");
+
         var barData = {
             labels: language_keys,
             datasets: [{
@@ -64,6 +67,7 @@ $(document).ready(function(){
                 maintainAspectRatio: false
             }
         });
+        $("#barChart").fadeIn(800);
 
         var lineData = {
             type: 'line',
@@ -107,6 +111,7 @@ $(document).ready(function(){
 
         var lineC = document.getElementById("lineChart").getContext("2d");
         window.LineChart = new Chart(lineC, lineData);
+        $("#lineChart").fadeIn(800);
 
         var pieData = {
             type: 'pie',
@@ -140,6 +145,7 @@ $(document).ready(function(){
 
         var pieC = document.getElementById("pieChart").getContext("2d");
         window.PieChart = new Chart(pieC, pieData);
+        $("#pieChart").fadeIn(800);
 
         var doughnutData = {
             type: 'doughnut',
@@ -180,6 +186,7 @@ $(document).ready(function(){
 
         var doughnutC = document.getElementById("doughnutChart").getContext("2d");
         window.DoughnutChart = new Chart(doughnutC, doughnutData);
+        $("#doughnutChart").fadeIn(800);
 
         var radarData = {
             type: 'radar',
@@ -217,6 +224,7 @@ $(document).ready(function(){
         };
 
         window.RadarChart = new Chart(document.getElementById("radarChart"), radarData);
+        $("#radarChart").fadeIn(800);
 
         var polarData = {
             data: {
@@ -253,10 +261,12 @@ $(document).ready(function(){
 
         var polarC = document.getElementById("polarChart");
         window.PolarArea = Chart.PolarArea(polarC, polarData);
+        $("#polarChart").fadeIn(800);
     }
 
     $('#userForm').on('submit', function(e){
         e.preventDefault();
+        $(".loader").fadeIn(100);
         languages_data = {};
         language_keys = [];
         language_values = [];
