@@ -27,7 +27,7 @@ $(document).ready(function(){
                 language_colors.push(github_colors[language_keys[k]]);
             }
 
-            showChart();
+            return showChart();
         });
     }
 
@@ -222,7 +222,7 @@ $(document).ready(function(){
             data: {
                 labels: language_keys,
                 datasets: [{
-                    label: 'Hidden dataset',
+                    label: 'Repos ',
                     data: language_values,
                     pointRadius: 3,
                     pointHoverRadius: 5,
@@ -298,7 +298,8 @@ $(document).ready(function(){
         language_values = [];
         language_colors = [];
         repos = [];
-    		var username = $("#input").val();
+    		var username = "";
+        username = ($("#input").val()).trim();
     		initiate(username);
     });
 });
