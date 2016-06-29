@@ -3,6 +3,15 @@ body{
     background-attachment: fixed;
 }
 
+.hr {
+    display: none;
+    background-color: #747373;
+    height: 3px;
+    margin: 0 auto;
+    width: 33%;
+    margin-bottom: 40px;
+}
+
 #header{
     height: 160px;
 }
@@ -12,6 +21,7 @@ body{
     margin: 5px 0;
     border-radius: 4px;
     border: 1px solid #bdc3c7;
+    margin-bottom: 0px;
 }
 
 h1 {
@@ -22,6 +32,24 @@ h1 {
 
 html, body, div, button {
     font-family: "Open Sans",sans-serif !important;
+}
+
+.github-corner {
+    display: none;
+}
+
+#star {
+    display: none;
+}
+
+.btn {
+    background-image: none !important;
+    border-color: none !important;
+    margin-bottom: 100px !important;
+}
+
+.btn-success {
+    background-color: #2ecc71 !important;
 }
 
 .loader:before, .loader:after, .loader {
@@ -90,4 +118,5 @@ html, body, div, button {
 
 #barChart, #lineChart, #pieChart, #doughnutChart, #radarChart, #polarChart {
     display: none;
+    margin-bottom: 50px;
 }

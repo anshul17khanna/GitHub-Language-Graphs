@@ -6,6 +6,8 @@ var github_colors = { "null": "#F7464A", "Mercury": "#ff2b2b", "TypeScript": "#2
 var language_colors = [];
 
 $(document).ready(function(){
+    $(".github-corner").fadeIn(1200);
+
     function initiate(username){
         $.getJSON("https://api.github.com/users/"+username+"/repos?callback=?", function(data){
             $(data.data).each(function(i,d){
@@ -262,6 +264,8 @@ $(document).ready(function(){
         var polarC = document.getElementById("polarChart");
         window.PolarArea = Chart.PolarArea(polarC, polarData);
         $("#polarChart").fadeIn(800);
+        $(".hr").fadeIn(800);
+        $("#star").fadeIn(800);
     }
 
     $('#userForm').on('submit', function(e){
