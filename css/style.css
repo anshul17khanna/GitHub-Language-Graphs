@@ -1,3 +1,12 @@
+body{
+    background-image: url('../css/background.png');
+    background-attachment: fixed;
+}
+
+#header{
+    height: 160px;
+}
+
 #input {
     padding: 7px;
     margin: 5px 0;
@@ -6,11 +15,13 @@
 }
 
 h1 {
-    font-size: 3em;
+    font-weight: bold;
+    font-size: 3em !important;
+    font-family: "Open Sans",sans-serif !important;
 }
 
 html, body, div, button {
-    font-family: "Open Sans",sans-serif;
+    font-family: "Open Sans",sans-serif !important;
 }
 
 .loader:before, .loader:after, .loader {
@@ -27,7 +38,7 @@ html, body, div, button {
     display: none;
     color: #f1e05a;
     font-size: 10px;
-    margin: 10px;
+    margin: 5px;
     position: relative;
     text-indent: -9999em;
     -webkit-transform: translateZ(0);
