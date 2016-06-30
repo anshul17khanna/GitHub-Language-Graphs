@@ -10,6 +10,14 @@ $(document).ready(function(){
 
     function initiate(username){
         $.getJSON("https://api.github.com/users/"+username+"/repos?callback=?", function(data){
+            if(data.data.message == "Not Found"){
+                $(".loader").fadeOut(500);
+                $("#noUser").fadeIn(800);
+                return;
+            }
+
+            $("#PageWrapper").fadeIn(100);
+
             $(data.data).each(function(i,d){
                 repos.push(d.name);
                 if(!languages_data[d.language])
@@ -271,6 +279,8 @@ $(document).ready(function(){
     $('#userForm').on('submit', function(e){
         e.preventDefault();
         $(".loader").fadeIn(100);
+        $("#noUser").fadeOut(200);
+        $("#PageWrapper").fadeOut(500);
         languages_data = {};
         language_keys = [];
         language_values = [];
