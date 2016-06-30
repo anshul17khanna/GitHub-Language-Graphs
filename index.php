@@ -5,7 +5,7 @@
         <title>GitHub Language Graphs</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8">
         <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" charset="utf-8">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/Chart.bundle.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
